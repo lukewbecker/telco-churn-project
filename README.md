@@ -1,4 +1,4 @@
-### TELCO Churn Project - README
+# TELCO Churn Project - README
 
 ## Project Planning
  - Project Description:
