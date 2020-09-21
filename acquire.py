@@ -23,13 +23,8 @@ from env import host, user, password
 def get_db(db, user=user, host=host, password=password):
     return f'mysql+pymysql://{user}:{password}@{host}/{db}'
 
-
-
-
-# This is the one I'll use for my acquire file in the Telco Churn project.
-# Being explicict in my SQL query allows me to only pull the extra info from the columns in the other tabes that I actually need, instead of returning the repeated foreign key columns. Saves me time on the prepare step.
-
-
+# Telco acquire function
+# Being explicit in my SQL query allows me to only pull the extra info from the columns in the other tabes that I actually need, instead of returning the repeated foreign key columns. Saves me time on the prepare step.
 # This acquire function will allow the user, with proper credentials to the CodeUp database access the same original dataframe that I started with in my process.
 # It will first search for a csv file containing the appropriate telco data in the same folder that the jupyter notebook is being run in, and if it doesn't find one
 # the function will execute the MySQL query call and create a local copy of the telco dataset.
