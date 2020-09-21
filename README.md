@@ -1,13 +1,17 @@
-# TELCO Churn Project - README
+# Models for Predicting TELCO Churn
 
 ## Project Planning
- - Project Description:
+#### Project Description:
 The purpose for this project is to create a model that accurately predicts future Telco customer churn based upon the provided Telco customer dataset. Another primary goal is to identify what drivers to churn are present in the current customer base.
 
 Part of the output from this project will be several files for you to use if you desire to recreate my work, which are: acquire.py, prepare.py, model.py and predictions.csv.
 
 Short Synopsis of Telco Data:
-> 
+> Project Background:
+Customer retention is a key metric for a successful business. The vast majority of new customers are not new telecom customers, and have churned from another company. The costs of acquiring a new customer take time to recoup, and then reducing churn is a key goal for any telecom company.
+More information on churn in the telecom industry can be found here at this [link](http://www.dbmarketing.com/telecom/churnreduction.html#:~:text=Wireless%20companies%20today%20measure%20voluntary,10%20percent%20and%2067%20percent.)
+
+Additional information, and the telco dataset can be accessed [here](https://www.kaggle.com/blastchar/telco-customer-churn) as well.
 
 
 ## Data Dictionary
@@ -18,18 +22,28 @@ Short Synopsis of Telco Data:
 ## Initial Hypotheses and Thoughts
 
 ### Thoughts
+The goal of this project is to discover drivers to customer churn, and create models that can accurately predict churn in the future. Thus, the dependent variable in this case will be the rate of churn, or if a customer churned or not. Finding which independent variables (the other datapoints in the dataest) are the most powerful drivers of that churn is what my models will need to focus on. 
 
-
-
+#### Questions to answer:
+- 
 
 
 
 ### Hypotheses
+
+- Is customer churn rate independent of contract type?
+    - Null Hypothesis: Churn rate is not significantly impacted by the type of contract a customer has.
+
+- Customers who have an "added service" are significantly less likely to churn than those customers .
+
+- Those who did churn had a significantly different average monthly costs than those who did not churn (on average). [Use T-test, probably a one-tailed test.]
+
+$H_{0}{$: 
 
 
 
 ## Project Plan:
 
 #### acquire.py
-acquiring the Telco Churn dataset from the Codeup Database.
+Acquiring the Telco Churn dataset from the Codeup Database.
 
