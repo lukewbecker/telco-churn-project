@@ -40,21 +40,20 @@ Additional information on the telco dataset and the dataset itself can be access
 - Since the goal of the project is to identify drivers of churn, my positive case will be that a customer churned. Thus, I will want to optimize my model for Recall, in order to minimize as many False Negatives (Type II errors) as possible.
 
 #### Questions to answer:
-- 
+- Is customer churn rate independent of contract type when controlling for internet service type?
 
 
 
 ### Hypotheses
 
-- Is customer churn rate independent of contract type?
-    - Null Hypothesis: Churn rate is not significantly impacted by the type of contract a customer has.
+- Is customer churn rate independent of contract type when controlling for payment type?
+    - Null Hypothesis: Churn rate is not significantly impacted by the type of contract a customer has when controlling for payment type.
+    - Alt Hypothesis: Churn rate is significatly impacted by the type of contract a customer has when controlling for payment service type.
 
-- Customers who have an "added service" are significantly less likely to churn than those customers .
-
-- Those who did churn had a significantly different average monthly costs than those who did not churn (on average). [Use T-test, probably a one-tailed test.]
+- Those who did churn had a significantly different average monthly costs than those who did not churn (on average). (Use T-test, probably a one-tailed test.)
 
 $H_{0}{$: 
-
+- Did senior citizens have higher monthly costs on average than the overal monthly costs, when considering Seniors with internet service?
 
 
 ## Project Plan:
@@ -62,3 +61,7 @@ $H_{0}{$:
 #### acquire.py
 Acquiring the Telco Churn dataset from the Codeup Database.
 
+#### prepare.py
+- address any missing data
+- address outliers
+- create single variables for 
