@@ -1,0 +1,62 @@
+# Prepare the telco dataset for ingesting, cleaning and preparing before beginning exploration.
+import pandas as pd
+import numpy as np
+
+# visualizing
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+
+# preparing
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+
+# turn off warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+
+# The prep function:
+def prep_telco_data(df):
+       
+    # Use booleans instead of replace to change type of variable to int in streaming columns
+    df.online_security = (df.online_security == 'Yes').astype(int)
+    df.online_backup = (df.online_backup == 'Yes').astype(int)
+    df.device_protection = (df.device_protection == 'Yes').astype(int)
+    df.tech_support = (df.tech_support == 'Yes').astype(int)
+    df.streaming_tv = (df.streaming_tv == 'Yes').astype(int)
+    df.streaming_movies = (df.streaming_movies == 'Yes').astype(int)
+    df.streaming_movies = (df.streaming_movies == 'Yes').astype(int)
+    df.multiple_lines = (df.multiple_lines == 'Yes').astype(int)
+    
+    # Use .replace instead
+    df.partner.replace(["Yes", "No"], [1,0], inplace = True)  
+    df.dependents.replace(["Yes", "No"], [1,0], inplace = True)
+    df.phone_service.replace(["Yes", "No"], [1,0], inplace = True)
+    df.paperless_billing.replace(["Yes", "No"], [1,0], inplace = True)
+    
+    # Dealing with the 11 blank values that are in the total_charges column. Since these are new customers and didn't yet attain 1 month of tenure, they don't have any total charges. However they are all locked in to 1 year and 2 year contracts, so we expect that they will at least finish out their contract period (That's an assumption). 
+    # In this case, we removed the blanks and simply replaced the blanks with a 0 (float), since all 11 of these customers hadn't been here a month yet, so there wouldn't be a reason to imput their total cost as anything other as 0.
+    df.total_charges = df.total_charges.str.replace(' ', '0').astype(float)
+    df.total_charges.dtype
+    
+    # Adding a column that tells us if the customer pays automatically or manually.
+    # is_automatic, 1 = True, 0 = False.
+    df['is_automatic'] = df.payment_type.replace(["Mailed check", "Electronic check", "Credit card (automatic)", "Bank transfer (automatic)"], [0,0,1,1])
+    
+    # Now, adding a dummy column for the churn column, which will be my target variable for this analysis:
+    df['churned'] = df.churn.replace(["Yes", "No"], [1,0])
+    
+    
+    # Finally, splitting my data:
+    
+    train_validate, test = train_test_split(df, test_size=.2, 
+                                            random_state=123, 
+                                            stratify=df.churned)
+    # Finally splitting the train_validate into the separate train and validate datasets.
+    train, validate = train_test_split(train_validate, test_size=.3, 
+                                   random_state=123, 
+                                   stratify=train_validate.churned)
+    return train, validate, test
