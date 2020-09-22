@@ -36,6 +36,10 @@ def prep_telco_data(df):
     df.dependents.replace(["Yes", "No"], [1,0], inplace = True)
     df.phone_service.replace(["Yes", "No"], [1,0], inplace = True)
     df.paperless_billing.replace(["Yes", "No"], [1,0], inplace = True)
+
+    # Creating column to check if customer is female. Don't need two columns since this dataset only has female/male; thus if not a female == 0, means the customer is a male.
+    df['is_female'] = df.gender == "Female"
+    df.is_female.replace([True, False], [1,0], inplace = True)
     
     # Dealing with the 11 blank values that are in the total_charges column. Since these are new customers and didn't yet attain 1 month of tenure, they don't have any total charges. However they are all locked in to 1 year and 2 year contracts, so we expect that they will at least finish out their contract period (That's an assumption). 
     # In this case, we removed the blanks and simply replaced the blanks with a 0 (float), since all 11 of these customers hadn't been here a month yet, so there wouldn't be a reason to imput their total cost as anything other as 0.
