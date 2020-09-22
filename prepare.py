@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 # The prep function:
 def prep_telco_data(df):
        
-    # Use booleans instead of replace to change type of variable to int in streaming columns
+    # Use booleans to change type of variable to int in streaming columns
     df.online_security = (df.online_security == 'Yes').astype(int)
     df.online_backup = (df.online_backup == 'Yes').astype(int)
     df.device_protection = (df.device_protection == 'Yes').astype(int)
@@ -31,11 +31,17 @@ def prep_telco_data(df):
     df.streaming_movies = (df.streaming_movies == 'Yes').astype(int)
     df.multiple_lines = (df.multiple_lines == 'Yes').astype(int)
     
-    # Use .replace instead
+    # Use .replace 
     df.partner.replace(["Yes", "No"], [1,0], inplace = True)  
     df.dependents.replace(["Yes", "No"], [1,0], inplace = True)
     df.phone_service.replace(["Yes", "No"], [1,0], inplace = True)
     df.paperless_billing.replace(["Yes", "No"], [1,0], inplace = True)
+
+    # Creating dummy columns for these multi-type columns:
+    service_dum = pd.get_dummies(df.contract_type)
+    internet_dum = pd.get_dummies(df.internet_service_type)
+    df = pd.concat([df, service_dum, internet_dum], axis = 1)
+    df.rename(columns = {'Month-to-month': 'month_to_month', 'One year': 'one_year', 'Two year': 'two_year', 'DSL': 'dsl_internet', 'Fiber optic': 'fiber_internet', 'None': 'no_internet'}, inplace = True)
 
     # Creating column to check if customer is female. Don't need two columns since this dataset only has female/male; thus if not a female == 0, means the customer is a male.
     df['is_female'] = df.gender == "Female"
