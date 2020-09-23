@@ -31,6 +31,7 @@ Additional information on the telco dataset and the dataset itself can be access
 - dependents: 1 = Yes, 0 = No
 - paperless_billing: 1 = Yes, 0 = No
 - is_automatic: dirived from the payment_type column; 1 == auto bank transfer and Credit Card (auto). 0 == Mailed check and Electronic check. Used in explore and model phases.
+- prediction (In the final .csv): 1 = churned, 0 = didn't churn, according to model's predictions.
 
 ## Initial Hypotheses and Thoughts
 
