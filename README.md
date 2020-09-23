@@ -15,22 +15,22 @@ Additional information on the telco dataset and the dataset itself can be access
 
 
 ## Data Dictionary
+
+##### I only list here the columns that I ended up using in my project.
+
 - churn: If the customer churned = Yes/1; if the customer didn't churn = No/0
-- tenure: Number of months person has been a customer
+- churned: If the customer churned = Yes/1; if the customer didn't churn = No/0
+- tenure: Number of months person has been a customer. 
+- t_yrs: Tenure adjusted for number of years (used only in explore phase).
 - monthly_charges: Individual customer's monthly charge (in dollars $)
 - total_charges: Individual customer's total charges over their entire tenure (in dollars $)
 - gender: Female/Male
 - is_female: 1 = Yes/female, 0 = No/male
 - senior citizen: 0 = No, 1 = Yes
-- partner: Yes/No
-- dependents: Yes/No
-- phone
-- 
-- 
-- 
-
-
-
+- partner: 1 = Yes, 0 = No
+- dependents: 1 = Yes, 0 = No
+- paperless_billing: 1 = Yes, 0 = No
+- is_automatic: dirived from the payment_type column; 1 == auto bank transfer and Credit Card (auto). 0 == Mailed check and Electronic check. Used in explore and model phases.
 
 ## Initial Hypotheses and Thoughts
 
@@ -43,25 +43,48 @@ Additional information on the telco dataset and the dataset itself can be access
 - Is customer churn rate independent of contract type when controlling for internet service type?
 
 
-
 ### Hypotheses
 
-- Is customer churn rate independent of contract type when controlling for payment type?
+- Is customer churn rate related to (or independent of) contract type?
     - Null Hypothesis: Churn rate is not significantly impacted by the type of contract a customer has when controlling for payment type.
-    - Alt Hypothesis: Churn rate is significatly impacted by the type of contract a customer has when controlling for payment service type.
+    - Alt Hypothesis: Churn rate is significatly impacted by the type of contract a customer has when controlling for payment type.
 
-- Those who did churn had a significantly different average monthly costs than those who did not churn (on average). (Use T-test, probably a one-tailed test.)
-
-$H_{0}{$: 
-- Did senior citizens have higher monthly costs on average than the overal monthly costs, when considering Seniors with internet service?
-
+- Is customer churn rate 
+    - Customer churn is not related to (is independent of) automatic payment type
+    - Customer churn is related to (is not independent of) automatic payment type
 
 ## Project Plan:
-
+Listing steps of the process.
 #### acquire.py
 Acquiring the Telco Churn dataset from the Codeup Database.
 
 #### prepare.py
 - address any missing data
 - address outliers
-- create single variables for 
+- create `is_automatic` for holding 1/0 (True/False) values
+
+#### Explore
+- Determine tenure cohorts
+- Discover average churn and retention rates by tenure cohort
+- Visualize the datat
+- Test both of hyptotheses
+
+#### Model
+- Try 2 different algorithms: logistic regression and random forest
+- Determine which features are most influential
+- fit models, evaluate on train
+- select best models and evaluate with validate
+- select top model, and run that model on the test dataset.
+- Create model.py incorporating above steps.
+
+#### Conclusion
+- Summarize findings
+- Recommendations for further study
+- Next steps
+
+## How to Reproduce
+1. Clone this repository into your own Github repo, and pull to your own local working directory.
+2. Have database to the Codeup DS database. 
+    - You must have already created an env.py file with your host, username, and password data set as variables inside that env file.
+3. Install the acquire.py and prepare.py into your working directory.
+4. Run the jupyter notebook.
