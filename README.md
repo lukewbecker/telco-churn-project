@@ -37,7 +37,7 @@ Additional information on the telco dataset and the dataset itself can be access
 ### Thoughts
 - The goal of this project is to discover drivers to customer churn, and create models that can accurately predict churn in the future. Thus, the dependent variable in this case will be the rate of churn, or if a customer churned or not. Finding which independent variables (the other datapoints in the dataest) are the most powerful drivers of that churn is what my models will need to focus on. 
 
-- Since the goal of the project is to identify drivers of churn, my positive case will be that a customer churned. Thus, I will want to optimize my model for Recall, in order to minimize as many False Negatives (Type II errors) as possible.
+- What about ease of payment? Does that have an impact on churn? What about monthly charges? Is that a good way to measure churn?
 
 #### Questions to answer:
 - Is customer churn rate independent of contract type when controlling for internet service type?
