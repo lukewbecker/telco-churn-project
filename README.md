@@ -1,4 +1,4 @@
-# Models for Predicting TELCO Churn
+# Predicting TELCO Churn Project
 
 ## Project Planning
 #### Project Description:
