@@ -4,7 +4,7 @@
 #### Project Description:
 The purpose of this project is to create a model that predicts future Telco customer churn as accuractly as possible, based upon the provided Telco customer dataset. Another primary goal is to identify what drivers to churn are present in the current customer base.
 
-Part of the output from this project will be several files for you to use if you desire to recreate my work, which are: acquire.py, prepare.py, model.py and predictions.csv.
+Part of the output from this project will be several files for you to use if you desire to recreate my work, which are: acquire.py, prepare.py, model jupyter notebook and telco_predicted_churn.csv.
 
 ### Short Synopsis of Telco Data:
 Project Background:
