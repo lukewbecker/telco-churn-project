@@ -31,7 +31,9 @@ Additional information on the telco dataset and the dataset itself can be access
 - dependents: 1 = Yes, 0 = No
 - paperless_billing: 1 = Yes, 0 = No
 - is_automatic: dirived from the payment_type column; 1 == auto bank transfer and Credit Card (auto). 0 == Mailed check and Electronic check. Used in explore and model phases.
+- .csv: comma separated value, is a file in which the 
 - prediction (In the final .csv): 1 = churned, 0 = didn't churn, according to model's predictions.
+
 
 ## Initial Hypotheses and Thoughts
 
@@ -55,7 +57,7 @@ Additional information on the telco dataset and the dataset itself can be access
     - Customer churn is related to (is not independent of) automatic payment type
 
 ## Project Plan:
-Listing steps of the process.
+
 #### acquire.py
 Acquiring the Telco Churn dataset from the Codeup Database.
 
@@ -80,8 +82,7 @@ Acquiring the Telco Churn dataset from the Codeup Database.
 
 #### Conclusion
 - Summarize findings
-- Recommendations for further study
-- Next steps
+- Recommendations for further study/Next Steps
 
 ## How to Reproduce
 1. Clone this repository into your own Github repo, and pull to your own local working directory.
